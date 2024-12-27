@@ -57,6 +57,9 @@ def find_restaurants(api_key, lat, lng, radius, min_rating, max_rating, min_revi
         rating = place_details.get('rating')
         reviews_count = place_details.get('user_ratings_total')
 
+        if rating is None or reviews_count is None:
+                        continue
+
         if (
             min_rating <= rating <= max_rating and 
             min_reviews <= reviews_count <= max_reviews
